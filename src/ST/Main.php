@@ -11,6 +11,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\plugin\PluginBase;
+use pocketmine\block\Sign;
 
 
 
