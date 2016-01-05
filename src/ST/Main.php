@@ -60,9 +60,9 @@ public function onInteract(PlayerInteractEvent $ev){
 	return;
 	}
 if(isset($this->Setter[$p->getName()])){
-	
+	 
 	if($block instanceof Sign){
-	$sign->setText($this->line1[$p->getName()],$this->line2[$p->getName()],$this->line3[$p->getName()],$this->line4[$p->getName()]);
+	$block->setText($this->line1[$p->getName()],$this->line2[$p->getName()],$this->line3[$p->getName()],$this->line4[$p->getName()]);
 	$p->sendMessage(TF::BLUE."Text setted!");
 	unset($this->Setter[$p->getName()]);
 }
