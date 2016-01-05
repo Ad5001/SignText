@@ -11,7 +11,8 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\plugin\PluginBase;
-use pocketmine\block\Sign;
+use pocketmine\block\Sign; 
+use pocketmine\math\Vector3;
 
 
 
@@ -21,11 +22,11 @@ class Main extends PluginBase implements Listener{
 public function onEnable(){
 $this->getServer()->getPluginManager()->registerEvents($this,$this);
 	$this->getServer()->getLogger()->notice(TF::YELLOW."[SignText]Plugin Loaded!");
-	$this->line1 = [];
-	$this->line2 = [];
-	$this->line3 = [];
-	$this->line4 = [];
-	$this->Setter = [];
+	$this->line1 = array();
+	$this->line2 = array();
+	$this->line3 = array();
+	$this->line4 = array();
+	$this->Setter = array();
 }
 
 
@@ -54,15 +55,15 @@ $this->getServer()->getPluginManager()->registerEvents($this,$this);
 public function onInteract(PlayerInteractEvent $ev){
 	$p = $ev->getPlayer();
 	$block = $ev->getBlock();
-	
+	$sign=$p->getLevel()->getTile($block);
 	if($block->getID() != 63 && $block->getID() != 68){
 	$p->sendMessage(TF::GREEN."Please tap on a sign!");
 	return;
 	}
 if(isset($this->Setter[$p->getName()])){
 	 
-	if($block instanceof Sign){
-	$block->setText($this->line1[$p->getName()],$this->line2[$p->getName()],$this->line3[$p->getName()],$this->line4[$p->getName()]);
+	if($sign instanceof Sign){
+	$sign->setText($this->line1[$p->getName()],$this->line2[$p->getName()],$this->line3[$p->getName()],$this->line4[$p->getName()]);
 	$p->sendMessage(TF::BLUE."Text setted!");
 	unset($this->Setter[$p->getName()]);
 }
