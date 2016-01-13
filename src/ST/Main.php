@@ -74,3 +74,4 @@ public function addSetter(Player $p){
 	$this->Setter[$p->getName()] = array("Player" => $p->getName());
 }
 }
+?>
